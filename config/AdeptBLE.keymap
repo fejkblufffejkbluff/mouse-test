@@ -12,6 +12,8 @@
 #define DEVICE 3
 #define BLTH 4
 #define SNIPE 5
+#define ZOOM 6
+#define SCRLR 7
 
 / {
   combos {
@@ -52,8 +54,12 @@
     default_layer {
       display-name = "Default";
       bindings = <
-        &ltm BLTH MB4 &ltm DEVICE MB5 &mkp MCLK &lth SCRLM RCLK
-        &mkp LCLK                               &mto SCRLM SNIPE
+        &mto SCRLH BLTH      // Top-left: Tap=Scroll-Hold, Hold=Bluetooth layer
+        &mto SNIPE DEVICE    // Top-middle-left: Tap=SNIPE/DPI, Hold=Device layer
+        &lth ZOOM MCLK       // Middle-right: Tap=Middle Click, Hold=Zoom layer
+        &lth SCRLM RCLK      // Top-right: Tap=Right Click, Hold=Scroll-Momentary
+        &mkp LCLK            // Bottom-left: Left Click (normal)
+        &lth SCRLR CTRL_TAB  // Bottom-right: Tap=CTRL+TAB, Hold=Scroll Left/Right layer
       >;
     };
     scroll_tap_layer {
@@ -91,5 +97,24 @@
         &trans               &to DEFAULT
       >;
     };
+    zoom_layer {
+      display-name = "Zoom";
+      bindings = <
+        &trans &trans &trans &trans
+        &trans &trans
+      >;
+      // Configure trackball vertical movement for zoom in/out
+    };
+    scrlr_layer {
+      display-name = "Scroll-LeftRight";
+      bindings = <
+        &trans &trans &trans &trans
+        &trans &trans
+      >;
+      // Configure trackball horizontal movement for left/right scrolling
+    };
   };
 };
+
+
+
