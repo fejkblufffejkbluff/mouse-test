@@ -1,6 +1,6 @@
 file_format: "1"
-id: AdeptBLE
-name: AdeptBLE
+id: adept_ble
+name: adept_ble
 type: shield
 url: https://github.com/taichan1113/mouse-test
 requires: [seeeduino_xiao_ble]
